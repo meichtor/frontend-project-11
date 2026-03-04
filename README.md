@@ -6,7 +6,7 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=meichtor_frontend-project-11&metric=bugs)](https://sonarcloud.io/summary/new_code?id=meichtor_frontend-project-11)
 
 ## Demo
-[RSS-agregator]("https://frontend-project-11-rho-six.vercel.app/")
+[RSS-agregator](https://frontend-project-11-rho-six.vercel.app/)
 
 ## Setup
 

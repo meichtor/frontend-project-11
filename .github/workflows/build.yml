@@ -1,8 +1,7 @@
 name: Node CI
 on:
   - push
-  - pull_request:
-      types: [opened, synchronize, reopened]
+  - pull_request
 jobs:
   build:
     runs-on: ubuntu-latest

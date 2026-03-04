@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSS-agregator</title>
+  </head>
+  <body>
+    <div id="app">
+      <main class="main">
+        <div class="form-container">
+          <div class="form-content container">
+            <div class="page-content">
+              <h1 class="display-4 page-header">RSS агрегатор</h1>
+              <p class="h5 page-description">
+                Начните читать RSS сегодня! Это легко, это красиво.
+              </p>
+            </div>
+
+            <form class="form" action="/">
+              <div class="form-row">
+                <label class="form-field">
+                  <p class="form-label-text">Ссылка RSS</p>
+                  <input
+                    id="#form-input"
+                    type="text"
+                    class="form-input"
+                  />
+                </label>
+                <button class="button form-submit">Добавить</button>
+              </div>
+              <p class="form-description">
+                Пример: https://lorem-rss.hexlet.app/feed
+              </p>
+            </form>
+          </div>
+        </div>
+        <div class="feed-container"></div>
+      </main>
+      <footer class="footer">
+        <p class="footer-copyright">
+          created by
+          <a class="link-primary" href="https://ru.hexlet.io/">Hexlet</a>
+        </p>
+      </footer>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

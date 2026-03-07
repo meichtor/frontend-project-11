@@ -2,12 +2,7 @@
 
 /* base */
 :root {
-  line-height: 1.5;
-  font-weight: 400;
-
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,39 +10,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: var(--bs-gray-100);
-  color: var(--bs-gray-700);
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-
-button:hover {
-  border-color: #646cff;
-}
-
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset !important;
+  -webkit-text-fill-color: #000 !important; 
 }
 
 /* layout */
@@ -65,8 +32,6 @@ body {
 
   width: 100%;
   min-height: 100vh;
-
-  text-align: center;
 }
 
 .main {
@@ -82,112 +47,6 @@ body {
 }
 
 /* app */
-.form-container {
-  background-color: var(--bs-body-color);
-  color: var(--bs-white);
-}
-
-.form-content {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 1em;
-
-  max-width: 60vw;
-  padding-top: 2em;
-  padding-bottom: 2em;
-}
-
-.page-content {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-}
-
-.page-header {
-  font-weight: 400;
-}
-
-.page-description {
-  margin-bottom: 0;
-  font-weight: 400;
-}
-
-/* form */
-
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.5em;
-
-  width: 100%;
-}
-
-.form-row {
-  display: flex;
-  width: 100%;
-  gap: 1em;
-}
-
-.form-field {
-  position: relative;
-  display: flex;
-  flex: 1 0 80%;
-}
-
-.form-input {
-  padding: 1.5em 1em 0.5em 1em;
-  flex-grow: 1;
-
-  border-radius: 8px;
-  background-color: var(--bs-white);
-
-  color: var(--bs-body-color);
-  line-height: 1;
-}
-
-.form-label-text {
-  --left-indent: 1.3em;
-  position: absolute;
-  top: 0.2em;
-  left: var(--left-indent);
-
-  width: calc(100% - var(--left-indent));
-  height: 2em;
-  margin: 0;
-
-  font-size: 0.8em;
-  color: var(--bs-gray-600);
-  font-weight: 500;
-  text-align: start;
-}
-
-.form-description {
-  margin: 0;
-
-  font-size: 0.9em;
-  font-weight: 400;
-  color: var(--bs-gray-600);
-}
-
 .form-submit {
-  flex: 1 1 20%;
-}
-
-/* footer */
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  padding: 1em;
-
-  background-color: var(--bs-light);
-  border-top: 1px solid var(--bs-border-color);
-}
-
-.footer-copyright {
-  margin: 0;
+  min-height: 58px;
 }

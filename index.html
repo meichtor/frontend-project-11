@@ -1,50 +1,53 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSS-agregator</title>
-  </head>
-  <body>
-    <div id="app">
-      <main class="main">
-        <div class="form-container">
-          <div class="form-content container">
-            <div class="page-content">
-              <h1 class="display-4 page-header">RSS агрегатор</h1>
-              <p class="h5 page-description">
-                Начните читать RSS сегодня! Это легко, это красиво.
-              </p>
-            </div>
 
-            <form class="form" action="/">
-              <div class="form-row">
-                <label class="form-field">
-                  <p class="form-label-text">Ссылка RSS</p>
-                  <input
-                    id="#form-input"
-                    type="text"
-                    class="form-input"
-                  />
-                </label>
-                <button class="button form-submit">Добавить</button>
-              </div>
-              <p class="form-description">
-                Пример: https://lorem-rss.hexlet.app/feed
-              </p>
-            </form>
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RSS-agregator</title>
+</head>
+
+<body>
+  <div id="app">
+    <main class="main">
+      <div class="form-container bg-dark text-light">
+        <div class="form-content container d-flex flex-column col-12 gap-3 py-4">
+          <div class="page-content d-flex flex-column col-12">
+            <h1 class="page-header display-4 fw-normal">RSS агрегатор</h1>
+            <p class="page-description h5 fw-normal">
+              Начните читать RSS сегодня! Это легко, это красиво.
+            </p>
           </div>
+
+          <form id="add-feed-form" class="form w-100 d-flex align-items-start gap-3 needs-validation" action="/"
+            novalidate>
+            <div class="form-field d-flex flex-column col-6 gap-2">
+              <div class="d-flex flex-column gap-1 form-floating w-100">
+                <input id="formInput" autofocus type="url" class="form-input form-control w-100 focus-ring" required>
+                <label for="formInput" class="form-label fw-medium">Ссылка RSS</label>
+
+                <p class="form-description small text-secondary m-0">
+                  Пример: https://lorem-rss.hexlet.app/feed
+                </p>
+                <p class="invalid-feedback m-0"></p>
+                <p class="valid-feedback m-0"></p>
+              </div>
+            </div>
+            <button class="form-submit btn btn-primary btn-lg col-2" type="submit">Добавить</button>
+          </form>
         </div>
-        <div class="feed-container"></div>
-      </main>
-      <footer class="footer">
-        <p class="footer-copyright">
-          created by
-          <a class="link-primary" href="https://ru.hexlet.io/">Hexlet</a>
-        </p>
-      </footer>
-    </div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+      </div>
+      <div class="feed-container"></div>
+    </main>
+    <footer class="footer col-12 d-flex justify-content-center border-top">
+      <p class="footer-copyright m-0 p-3">
+        created by
+        <a class="link-primary" href="https://ru.hexlet.io/">Hexlet</a>
+      </p>
+    </footer>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>

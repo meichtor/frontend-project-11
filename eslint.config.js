@@ -8,11 +8,14 @@ export default defineConfig([
   js.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs}'],
-    plugins: { js, stylistic },
+    languageOptions: { globals: globals.browser },
+    plugins: { js },
     extends: ['js/recommended'],
     rules: {
       '@stylistic/indent': ['error', 2],
     },
   },
-  { files: ['**/*.js'], languageOptions: { globals: globals.browser } },
+  {
+    ignores: ['dist/'],
+  },
 ])

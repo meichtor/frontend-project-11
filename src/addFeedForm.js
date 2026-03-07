@@ -4,8 +4,8 @@ import { subscribe, snapshot } from 'valtio/vanilla'
 
 const validateSchema = object().shape({
   feedUrl: string()
-    .required('Поле не должно быть пустым')
-    .url('Ссылка должна быть валидным URL'),
+    .required('addFeed.errors.required')
+    .url('addFeed.errors.validUrl'),
 })
 
 const validate = feedUrl => validateSchema.validate(feedUrl)
@@ -25,12 +25,12 @@ const renderError = (state, formElements) => {
   formElements.invalidFeedback.textContent = ''
 }
 
-const renderSuccess = (state, formElements) => {
+const renderSuccess = (state, formElements, i18n) => {
   const { process } = state.form
 
   if (process === 'send') {
     formElements.validFeedback.classList.add('d-flex')
-    formElements.validFeedback.textContent = 'RSS успешно загружен'
+    formElements.validFeedback.textContent = i18n.t('addFeed.success')
     formElements.form.reset()
     formElements.input.focus()
     return
@@ -40,11 +40,11 @@ const renderSuccess = (state, formElements) => {
   formElements.validFeedback.classList.remove('d-flex')
 }
 
-const handleFeedForm = (formElements, state) => {
+const handleFeedForm = (formElements, state, i18n) => {
   subscribe(state, () => {
     const currentState = snapshot(state)
     renderError(currentState, formElements)
-    renderSuccess(currentState, formElements)
+    renderSuccess(currentState, formElements, i18n)
   })
 
   formElements.input.addEventListener('input', (e) => {
@@ -61,7 +61,7 @@ const handleFeedForm = (formElements, state) => {
     formState.process = 'sending'
 
     if (isDuplicateUrl) {
-      formState.error = 'RSS уже существует'
+      formState.error = i18n.t('addFeed.errors.urlExist')
       return
     }
 
@@ -78,9 +78,10 @@ const handleFeedForm = (formElements, state) => {
         formState.process = 'send'
       })
       .catch((error) => {
+        const message = i18n.t(error.message)
         formState.valid = false
-        formState.error = error.message
-        throw error.message
+        formState.error = message
+        throw message
       })
   })
 }

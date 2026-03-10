@@ -20,7 +20,7 @@
             </p>
           </div>
 
-          <form id="add-feed-form" class="form w-100 d-flex align-items-start gap-3 needs-validation" action="/"
+          <form id="addFeedForm" class="form w-100 d-flex align-items-start gap-3 needs-validation" action="/"
             novalidate>
             <div class="form-field d-flex flex-column col-6 gap-2">
               <div class="d-flex flex-column gap-1 form-floating w-100">
@@ -38,7 +38,15 @@
           </form>
         </div>
       </div>
-      <div class="feed-container"></div>
+      <div class="feed-container py-5">
+        <div class="d-flex justify-content-between container">
+          <div id="feedPosts" class="col-7">
+          </div>
+          <div id="feeds" class="col-4">
+            <ul  class="feed-list list-unstyled d-flex flex-column gap-3"></ul>
+          </div>
+        </div>
+      </div>
     </main>
     <footer class="footer col-12 d-flex justify-content-center border-top">
       <p class="footer-copyright m-0 p-3">

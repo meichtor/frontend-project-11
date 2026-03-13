@@ -22,6 +22,9 @@ const app = () => {
       feedUrl: '',
       error: null,
     },
+    ui: {
+      refetchFeedsTimeout: 5000,
+    },
   })
 
   const formElements = {

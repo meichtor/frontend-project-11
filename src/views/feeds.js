@@ -13,8 +13,8 @@ const createPost = (post, ui, i18n) => {
   const buttonEl = document.createElement('button')
   buttonEl.classList.add('btn', 'btn-outline-primary')
   buttonEl.textContent = i18n.t('posts.viewPost')
-  buttonEl.setAttribute('data-bs-toggle', `modal`)
-  buttonEl.setAttribute('data-bs-target', `#modalId${post.id}`)
+  buttonEl.dataset.bsToggle = 'modal'
+  buttonEl.dataset.bsTarget = `#modalId${post.id}`
   buttonEl.addEventListener('click', () => {
     if (!isWatchedPost) {
       ui.watchedPosts.push(post.id)
@@ -35,7 +35,6 @@ const renderPosts = (state, formElements, i18n) => {
 
   if (!postsContainer.querySelector('.feed-posts')) {
     const heading = document.createElement('h3')
-    heading.classList.add()
     heading.classList.add('mb-4')
     heading.textContent = i18n.t('posts.heading')
 
@@ -49,8 +48,9 @@ const renderPosts = (state, formElements, i18n) => {
   const list = postsContainer.querySelector('.feed-posts')
   const existingPostIds = [...list.querySelectorAll('li')].map(el => el.dataset.postId)
 
-  posts.forEach((post) => {
-    const isNewPost = !existingPostIds.find(id => id === post.id)
+  const sortedPosts = posts.sort((a, b) => b.id - a.id)
+  sortedPosts.forEach((post) => {
+    const isNewPost = !existingPostIds.some(id => id === post.id)
 
     if (isNewPost) {
       const postEl = createPost(post, ui, i18n)
@@ -82,7 +82,7 @@ const renderPostModal = (post, i18n) => {
   const headerCloseEl = document.createElement('button')
   headerCloseEl.setAttribute('type', 'button')
   headerCloseEl.classList.add('btn-close')
-  headerCloseEl.setAttribute('data-bs-dismiss', 'modal')
+  headerCloseEl.dataset.bsDismiss = 'modal'
   headerCloseEl.setAttribute('aria-label', 'Close')
 
   modalHeader.append(headerEl, headerCloseEl)
@@ -98,7 +98,7 @@ const renderPostModal = (post, i18n) => {
   const footerCloseEl = document.createElement('button')
   footerCloseEl.setAttribute('type', 'button')
   footerCloseEl.classList.add('btn', 'btn-secondary')
-  footerCloseEl.setAttribute('data-bs-dismiss', 'modal')
+  footerCloseEl.dataset.bsDismiss = 'modal'
   footerCloseEl.setAttribute('aria-label', 'Close')
   footerCloseEl.textContent = i18n.t('posts.closePreview')
 

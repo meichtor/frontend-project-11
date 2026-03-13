@@ -8,7 +8,7 @@ const validateRSS = (xml) => {
     return xml
   }
   else {
-    throw { message: 'addFeed.errors.invalidRSS' }
+    throw new Error('addFeed.errors.invalidRSS')
   }
 }
 

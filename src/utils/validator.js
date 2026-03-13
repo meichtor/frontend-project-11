@@ -7,12 +7,12 @@ const validateSchema = object().shape({
 })
 
 const validateUrl = (state) => {
-  const existUrl = state.feeds.find(feed => feed.url === state.form.feedUrl)
+  const existUrl = state.feeds.some(feed => feed.url === state.form.feedUrl)
 
   return validateSchema.validate(state.form)
     .then(() => {
       if (existUrl) {
-        throw { message: 'addFeed.errors.urlExist' }
+        throw new Error('addFeed.errors.urlExist')
       }
       return state.form.feedUrl
     })

@@ -7,7 +7,7 @@ const loadRSS = (url) => {
     .then(response => response.data.contents)
     .catch((err) => {
       console.log(err)
-      throw { message: 'addFeed.errors.networkError' }
+      throw new Error('addFeed.errors.networkError')
     })
 }
 

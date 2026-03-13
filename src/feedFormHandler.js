@@ -53,6 +53,7 @@ const handleFeedForm = (formElements, state, i18n) => {
         formState.process = 'send'
       })
       .catch((error) => {
+        console.log(error)
         const message = error.message
         formState.process = 'error'
 

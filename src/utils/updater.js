@@ -9,7 +9,7 @@ const updateFeed = (state, feed, i18n) => {
       const newPosts = feedPosts.filter(post => !postsLinks.has(post.url))
 
       if (newPosts.length > 0) {
-        state.posts.unshift(...newPosts)
+        state.posts.push(...newPosts)
       }
     })
     .catch((e) => {

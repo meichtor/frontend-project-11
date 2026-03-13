@@ -7,20 +7,23 @@ import parseFeed from './utils/parser'
 import autoUpdateFeeds from './utils/updater'
 
 const handleFeedForm = (formElements, state, i18n) => {
-  subscribe(state.form, () => {
-    const currentState = snapshot(state)
-    renderError(currentState, formElements)
-    renderSuccess(currentState, formElements, i18n)
-  })
-
   subscribe(state.feeds, () => {
     const currentState = snapshot(state)
     renderFeeds(currentState, formElements, i18n)
   })
 
   subscribe(state.posts, () => {
+    renderPosts(state, formElements, i18n)
+  })
+
+  subscribe(state.ui, () => {
+    renderPosts(state, formElements, i18n)
+  })
+
+  subscribe(state.form, () => {
     const currentState = snapshot(state)
-    renderPosts(currentState, formElements, i18n)
+    renderError(currentState, formElements)
+    renderSuccess(currentState, formElements, i18n)
   })
 
   formElements.input.addEventListener('input', (e) => {

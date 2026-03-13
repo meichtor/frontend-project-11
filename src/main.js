@@ -24,6 +24,7 @@ const app = () => {
     },
     ui: {
       refetchFeedsTimeout: 5000,
+      watchedPosts: [],
     },
   })
 

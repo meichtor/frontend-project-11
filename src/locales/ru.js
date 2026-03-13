@@ -6,6 +6,8 @@ export default {
     posts: {
       heading: 'Посты',
       viewPost: 'Просмотр',
+      closePreview: 'Закрыть',
+      openPost: 'Читать полностью',
     },
     addFeed: {
       success: 'RSS успешно загружен',

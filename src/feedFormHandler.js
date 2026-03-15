@@ -1,5 +1,5 @@
 import { subscribe, snapshot } from 'valtio/vanilla'
-import { renderError, renderSuccess } from './views/form'
+import renderFeedBack from './views/form'
 import { renderFeeds, renderPosts } from './views/feeds'
 import validateUrl from './utils/validator'
 import loadRSS from './utils/api'
@@ -22,8 +22,7 @@ const handleFeedForm = (formElements, state, i18n) => {
 
   subscribe(state.form, () => {
     const currentState = snapshot(state)
-    renderError(currentState, formElements)
-    renderSuccess(currentState, formElements, i18n)
+    renderFeedBack(currentState, formElements, i18n)
   })
 
   formElements.input.addEventListener('input', (e) => {
@@ -53,7 +52,6 @@ const handleFeedForm = (formElements, state, i18n) => {
         formState.process = 'send'
       })
       .catch((error) => {
-        console.log(error)
         const message = error.message
         formState.process = 'error'
 

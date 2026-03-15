@@ -32,8 +32,7 @@ const app = () => {
     form: document.querySelector('#addFeedForm'),
     input: document.querySelector('#formInput'),
     addButton: document.querySelector('.form-submit'),
-    invalidFeedback: document.querySelector('.invalid-feedback'),
-    validFeedback: document.querySelector('.valid-feedback'),
+    feedbackContainer: document.querySelector('.feedback'),
     postsContainer: document.querySelector('#feedPosts'),
     feedsContainer: document.querySelector('#feeds'),
   }

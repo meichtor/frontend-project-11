@@ -35,8 +35,8 @@ const createPost = (post, ui, formElements, i18n) => {
 
     if (!isWatchedPost) {
       ui.watchedPosts.push(post.id)
-      linkEl.classList.remove('fw-bold')
-      linkEl.classList.add('fw-normal')
+      linkEl.classList.remove('fw-bold', 'link-primary')
+      linkEl.classList.add('link-secondary')
     }
   })
 

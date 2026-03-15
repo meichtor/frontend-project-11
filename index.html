@@ -10,24 +10,22 @@
 
 <body>
   <div id="app">
-    <div class="modal fade preview-post-modal" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <h1 class="modal-title fs-5" id="modalTitle"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"></button>
+            <a href="/" class="btn btn-primary"></a>
           </div>
         </div>
       </div>
     </div>
-
     <main class="main">
       <div class="form-container bg-dark text-light">
         <div class="form-content container d-flex flex-column col-12 gap-3 py-4">
@@ -42,7 +40,8 @@
             novalidate>
             <div class="form-field d-flex flex-column col-6 gap-2">
               <div class="d-flex flex-column gap-1 form-floating w-100">
-                <input id="formInput" autofocus type="url" class="form-input form-control w-100 focus-ring" required aria-label="url">
+                <input id="formInput" autofocus type="url" class="form-input form-control w-100 focus-ring" required
+                  aria-label="url">
                 <label for="formInput" class="form-label fw-medium">Ссылка RSS</label>
 
                 <p class="form-description small text-secondary m-0">Пример: https://lorem-rss.hexlet.app/feed</p>
@@ -55,7 +54,8 @@
       </div>
       <div class="feed-container py-5">
         <div class="d-flex justify-content-between container">
-          <div id="feedPosts" class="col-7 posts"></div>
+          <div id="feedPosts" class="col-7 posts">
+          </div>
           <div id="feeds" class="col-4 feeds"></div>
         </div>
       </div>

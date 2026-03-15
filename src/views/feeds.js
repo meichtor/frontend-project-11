@@ -1,4 +1,19 @@
-const createPost = (post, ui, i18n) => {
+const renderModalContent = (post, modalEl, i18n) => {
+  const modalTitle = modalEl.querySelector('.modal-title')
+  const modalContent = modalEl.querySelector('.modal-body')
+  const modalFooter = modalEl.querySelector('.modal-footer')
+  const footerCloseBtn = modalFooter.querySelector('.btn-secondary')
+  const footerViewLink = modalFooter.querySelector('.btn-primary')
+  modalTitle.textContent = post.title
+  modalContent.innerHTML = post.description
+
+  footerCloseBtn.textContent = i18n.t('posts.closePreview')
+  footerViewLink.setAttribute('target', '_blank')
+  footerViewLink.setAttribute('href', post.url)
+  footerViewLink.textContent = i18n.t('posts.openPost')
+}
+
+const createPost = (post, ui, formElements, i18n) => {
   const isWatchedPost = ui.watchedPosts.includes(post.id)
   const li = document.createElement('li')
   li.classList.add('d-flex', 'align-items-center', 'justify-content-between', 'gap-3')
@@ -7,15 +22,17 @@ const createPost = (post, ui, i18n) => {
   const linkEl = document.createElement('a')
   linkEl.setAttribute('href', post.url)
   linkEl.setAttribute('target', '_blank')
-  linkEl.classList.add('link-primary', 'fw-bold')
+  linkEl.classList.add('link-primary', 'fw-normal')
   linkEl.textContent = post.title
 
   const buttonEl = document.createElement('button')
   buttonEl.classList.add('btn', 'btn-outline-primary')
   buttonEl.textContent = i18n.t('posts.viewPost')
   buttonEl.dataset.bsToggle = 'modal'
-  buttonEl.dataset.bsTarget = `#modalId${post.id}`
+  buttonEl.dataset.bsTarget = '#modal'
   buttonEl.addEventListener('click', () => {
+    renderModalContent(post, formElements.modalContainer, i18n)
+
     if (!isWatchedPost) {
       ui.watchedPosts.push(post.id)
       linkEl.classList.remove('fw-bold')
@@ -23,9 +40,7 @@ const createPost = (post, ui, i18n) => {
     }
   })
 
-  const modalPreview = renderPostModal(post, i18n)
-
-  li.append(linkEl, buttonEl, modalPreview)
+  li.append(linkEl, buttonEl)
   return li
 }
 
@@ -53,67 +68,10 @@ const renderPosts = (state, formElements, i18n) => {
     const isNewPost = !existingPostIds.some(id => id === post.id)
 
     if (isNewPost) {
-      const postEl = createPost(post, ui, i18n)
+      const postEl = createPost(post, ui, formElements, i18n)
       list.prepend(postEl)
     }
   })
-}
-
-const renderPostModal = (post, i18n) => {
-  const modalEl = document.createElement('div')
-  modalEl.classList.add('modal', 'fade')
-  modalEl.setAttribute('tabIndex', '-1')
-  modalEl.setAttribute('ariaHidden', 'true')
-  modalEl.setAttribute('id', `modalId${post.id}`)
-
-  const modalDialog = document.createElement('div')
-  modalDialog.classList.add('modal-dialog')
-
-  const modalContent = document.createElement('div')
-  modalContent.classList.add('modal-content')
-
-  const modalHeader = document.createElement('div')
-  modalHeader.classList.add('modal-header')
-
-  const headerEl = document.createElement('h5')
-  headerEl.classList.add('modal-title')
-  headerEl.textContent = post.title
-
-  const headerCloseEl = document.createElement('button')
-  headerCloseEl.setAttribute('type', 'button')
-  headerCloseEl.classList.add('btn-close')
-  headerCloseEl.dataset.bsDismiss = 'modal'
-  headerCloseEl.setAttribute('aria-label', 'Close')
-
-  modalHeader.append(headerEl, headerCloseEl)
-
-  const modalBody = document.createElement('div')
-  modalBody.classList.add('modal-body')
-
-  modalBody.innerHTML = post.description
-
-  const modalFooter = document.createElement('div')
-  modalFooter.classList.add('modal-footer')
-
-  const footerCloseEl = document.createElement('button')
-  footerCloseEl.setAttribute('type', 'button')
-  footerCloseEl.classList.add('btn', 'btn-secondary')
-  footerCloseEl.dataset.bsDismiss = 'modal'
-  footerCloseEl.setAttribute('aria-label', 'Close')
-  footerCloseEl.textContent = i18n.t('posts.closePreview')
-
-  const footerViewEl = document.createElement('a')
-  footerViewEl.classList.add('btn', 'btn-primary')
-  footerViewEl.setAttribute('target', '_blank')
-  footerViewEl.setAttribute('href', post.url)
-  footerViewEl.textContent = i18n.t('posts.openPost')
-
-  modalFooter.append(footerViewEl, footerCloseEl)
-  modalContent.append(modalHeader, modalBody, modalFooter)
-  modalDialog.append(modalContent)
-  modalEl.append(modalDialog)
-
-  return modalEl
 }
 
 const renderFeeds = (state, formElements, i18n) => {
@@ -123,8 +81,8 @@ const renderFeeds = (state, formElements, i18n) => {
     const li = document.createElement('li')
     li.classList.add('d-flex', 'flex-column', 'gap-1')
 
-    const title = document.createElement('p')
-    title.classList.add('text-black', 'fs-5', 'm-0')
+    const title = document.createElement('h3')
+    title.classList.add('text-black', 'h6', 'm-0', 'fw-normal')
     title.textContent = feed.title
 
     const description = document.createElement('p')

@@ -35,6 +35,7 @@ const app = () => {
     feedbackContainer: document.querySelector('.feedback'),
     postsContainer: document.querySelector('#feedPosts'),
     feedsContainer: document.querySelector('#feeds'),
+    modalContainer: document.querySelector('#modal'),
   }
 
   handleFeedForm(formElements, state, i18nIntance)

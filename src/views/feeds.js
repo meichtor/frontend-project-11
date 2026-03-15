@@ -22,7 +22,7 @@ const createPost = (post, ui, formElements, i18n) => {
   const linkEl = document.createElement('a')
   linkEl.setAttribute('href', post.url)
   linkEl.setAttribute('target', '_blank')
-  linkEl.classList.add('link-primary', 'fw-normal')
+  linkEl.classList.add('link-primary', 'fw-bold')
   linkEl.textContent = post.title
 
   const buttonEl = document.createElement('button')
